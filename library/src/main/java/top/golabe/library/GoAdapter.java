@@ -15,7 +15,6 @@ import top.golabe.library.callback.OnItemLongClickListener;
 import top.golabe.library.callback.OnLoadScrollListener;
 
 public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
-    private View mLoadView = null;
 
     protected List<T> mData;
     public Context mContext;
@@ -32,11 +31,6 @@ public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
         this(ctx, data, -1);
         this.mMultipleItemType = itemType;
     }
-
-    public void setLoadView(View view) {
-        this.mLoadView = view;
-    }
-
     @NonNull
     @Override
     public GoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
