@@ -1,7 +1,7 @@
 # CommonAdapter
 ### 通用RectclerView 设配器简单封装
 ###  gradloe  
-``xml
+```xml
 implementation 'top.golabe.CommonAdapter:library:1.0.0'
 ```
 ### 使用  
