@@ -110,7 +110,7 @@ public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
 
     }
 
-    public void removeAll() {
+    public void clear() {
         if (mData != null) {
             mData.clear();
             notifyDataSetChanged();
