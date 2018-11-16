@@ -1,6 +1,7 @@
 package top.golabe.commonadapter.adapter;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -27,12 +28,10 @@ public class SingletonAdapter extends GoAdapter<User> {
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(mContext, "点击" + position, Toast.LENGTH_SHORT).show();
                     }
                 }).setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(mContext, "长按" + position, Toast.LENGTH_SHORT).show();
                 return false;
             }
         }).setImageLoader(R.id.iv_avatar, new GoViewHolder.ImageLoader() {
@@ -44,25 +43,16 @@ public class SingletonAdapter extends GoAdapter<User> {
         }).setChildClickListener(R.id.tv_username, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "单击" + user.getUsername(), Toast.LENGTH_SHORT).show();
+
             }
         }).setChildLongClickListener(R.id.tv_username, new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(mContext, "长按" + user.getUsername(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
 
     }
 
-    public void  add(User user){
-        this.mData.add(user);
-        notifyItemChanged(mData.size());
-    }
-    public void  addAll(List <User> users){
-        int position=mData.size();
-        this.mData.addAll(users);
-        notifyItemChanged(position,mData.size());
-    }
+
 }

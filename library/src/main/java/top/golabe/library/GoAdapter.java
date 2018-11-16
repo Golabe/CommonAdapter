@@ -15,7 +15,7 @@ import top.golabe.library.callback.OnItemLongClickListener;
 import top.golabe.library.callback.OnLoadScrollListener;
 
 public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
-    private View mLoadView=null;
+    private View mLoadView = null;
 
     protected List<T> mData;
     public Context mContext;
@@ -33,9 +33,10 @@ public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
         this.mMultipleItemType = itemType;
     }
 
-    public void setLoadView(View view){
-        this.mLoadView=view;
+    public void setLoadView(View view) {
+        this.mLoadView = view;
     }
+
     @NonNull
     @Override
     public GoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -81,10 +82,39 @@ public abstract class GoAdapter<T> extends RecyclerView.Adapter<GoViewHolder> {
         this.mOnItemLongClickListener = listener;
     }
 
-    public void loadMore(RecyclerView rv,int layoutId,OnLoadScrollListener listener){
+    public void loadMore(RecyclerView rv, OnLoadScrollListener listener) {
+        rv.addOnScrollListener(listener);
+    }
+
+    public void add(T t) {
+        if (mData != null && t != null) {
+            mData.add(t);
+        }
+        notifyItemChanged(mData.size());
+    }
+
+    public void addAll(List<T> t) {
+        if (mData != null && t != null && t.size() > 0) {
+            int startPosition = mData.size();
+            mData.addAll(t);
+            notifyItemChanged(startPosition, mData.size());
+        }
 
     }
-    public  void loadMore(RecyclerView rv, OnLoadScrollListener listener){
-        rv.addOnScrollListener(listener);
+
+    public void remove(int position) {
+        if (mData != null && mData.size() >= position) {
+            mData.remove(position);
+            notifyDataSetChanged();
+        }
+
+    }
+
+    public void removeAll() {
+        if (mData != null) {
+            mData.clear();
+            notifyDataSetChanged();
+        }
+
     }
 }
