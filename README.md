@@ -2,7 +2,7 @@
 ### 通用RectclerView 设配器简单封装
 ###  gradloe  
 ```xml
-implementation 'top.golabe.CommonAdapter:library:1.0.0'
+implementation 'top.golabe.CommonAdapter:library:1.0.1'
 ```
 ### 使用  
 1、继承GoAdapter
